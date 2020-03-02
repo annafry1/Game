@@ -3,11 +3,14 @@ public class Player {
     protected Board b = new Board();
     protected String name;
     protected String token;
+    protected String [] pieces = new String[5];
+
 
 
     public Player(String name, String token) {
         this.name = name;
         this.token = token;
+
     }
 
     //display board with nice text intro

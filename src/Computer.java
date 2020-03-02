@@ -7,8 +7,8 @@ public class Computer extends Player{
     //very basic random move algorithm for now
     public int[] determineMove() {
 
-        int row = (int )(Math.random() * 8);
-        int col = (int )(Math.random() * 8);
+        int row = (int )(Math.random() * 10);
+        int col = (int )(Math.random() * 10);
 
         int[] move =  {row,col};
 
