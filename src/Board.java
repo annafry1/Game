@@ -10,7 +10,7 @@ public class Board {
         for(int row = 0; row < size; row++) {
             for(int col = 0; col < size; col++) {
 
-                grid[row][col] = "0";
+                grid[row][col] = "\uD83C\uDF0A";
 
             }
         }

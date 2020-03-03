@@ -5,8 +5,8 @@ public class Runner {
     public static void main(String[] args) {
 
         //make instances
-        Human h = new Human("Alby", "X");
-        Computer c = new Computer("Z");
+        Human h = new Human("Alby", "a");
+        Computer c = new Computer("❌");
         Scanner sc =  new Scanner(System.in);
 
         //game loop - alternate moves

@@ -3,7 +3,6 @@ public class Player {
     protected Board b = new Board();
     protected String name;
     protected String token;
-    protected String [] pieces = new String[5];
 
 
 
@@ -23,11 +22,13 @@ public class Player {
     //any move at 0,0 ends game
     public boolean checkWin() {
 
-        if(b.grid[0][0] != "0") {
+        if(b.grid[0][0] != "\uD83C\uDF0A") {
             return true;
         }
 
         return false;
 
     }
+
+
 }
