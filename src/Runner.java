@@ -5,7 +5,7 @@ public class Runner {
     public static void main(String[] args) {
 
         //make instances
-        Human h = new Human("Alby", "a");
+        Human h = new Human("Alby", "❌");
         Computer c = new Computer("❌");
         Scanner sc =  new Scanner(System.in);
 

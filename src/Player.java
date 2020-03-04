@@ -3,6 +3,11 @@ public class Player {
     protected Board b = new Board();
     protected String name;
     protected String token;
+    protected Ship carrier = new Ship(5);
+    protected Ship batlshp = new Ship(4);
+    protected Ship crusr = new Ship(3);
+    protected Ship sub = new Ship(3);
+    protected Ship dest = new Ship(2);
 
 
 
@@ -22,7 +27,7 @@ public class Player {
     //any move at 0,0 ends game
     public boolean checkWin() {
 
-        if(b.grid[0][0] != "\uD83C\uDF0A") {
+        if(b.grid[0][0] != "\uD83C\uDF20") {
             return true;
         }
 

@@ -10,7 +10,7 @@ public class Board {
         for(int row = 0; row < size; row++) {
             for(int col = 0; col < size; col++) {
 
-                grid[row][col] = "\uD83C\uDF0A";
+                grid[row][col] = "\uD83C\uDF20";
 
             }
         }
@@ -23,11 +23,16 @@ public class Board {
         for(int row = 0; row < size; row++) {
             for(int col = 0; col < size; col++) {
 
-                System.out.print("\uD83C\uDF0A");
+                System.out.print(grid[row][col]);
 
             }
             System.out.print("\n");
         }
+
+
+    }
+
+    public void placeShips(int row, int col){
 
 
     }
