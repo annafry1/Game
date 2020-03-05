@@ -1,7 +1,7 @@
 public class Computer extends Player{
 
     public Computer(String token) {
-        super("Bit Bucket", token);
+        super("Bit Bucket");
     }
 
     //very basic random move algorithm for now

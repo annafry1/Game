@@ -8,12 +8,14 @@ public class Player {
     protected Ship crusr = new Ship(3);
     protected Ship sub = new Ship(3);
     protected Ship dest = new Ship(2);
+    protected static String hit = "\uD83D\uDCA5";
+    protected int hitNum = 0;
+    protected static String miss = "⚪";
 
 
 
-    public Player(String name, String token) {
+    public Player(String name) {
         this.name = name;
-        this.token = token;
         carrier.shipLoc(b);
         batlshp.shipLoc(b);
         crusr.shipLoc(b);
@@ -27,11 +29,11 @@ public class Player {
         b.printBoard();
     }
 
+
     //win check routine with basic "algorithm" for now
-    //any move at 0,0 ends game
     public boolean checkWin() {
 
-        if(b.grid[0][0] != "\uD83C\uDF20") {
+        if(b.grid[0][0] == "0") {
             return true;
         }
 

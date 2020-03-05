@@ -3,7 +3,7 @@ public class Ship {
     int size;
     String [] length = new String[size];
     boolean vertical = false;
-    public static String image = "🛸";
+    public static String image = "\uD83D\uDE80";
 
 
     public Ship(int size) {
@@ -32,8 +32,7 @@ public class Ship {
                 row = random.nextInt(10);
                 col = random.nextInt(10 - this.size);
             }
-        } while ((!board.isValidLocation(row,col,this)));
-
+        } while (!board.isValidLocation(row,col,this));
 
         if (!vertical){
             for (int i = 0; i < this.size; i ++){

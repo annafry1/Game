@@ -3,7 +3,5 @@ public class Human extends Player{
         super(name, token);
     }
 
-//    public void placePieces() {
-//
-//    }
+
 }

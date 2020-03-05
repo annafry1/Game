@@ -5,8 +5,8 @@ public class Runner {
     public static void main(String[] args) {
 
         //make instances
-        Human h = new Human("Alby", "❌");
-        Computer c = new Computer("❌");
+        Human h = new Human("Alby");
+        Computer c = new Computer();
         Scanner sc =  new Scanner(System.in);
 
         c.display();
@@ -24,23 +24,11 @@ public class Runner {
             //human move: validate input and move
             while(!legalRow || !legalCol) {
 
-                //row move
-                System.out.println("Enter row to move:");
-                //hasNextInt will return true if user input is an int
-                if(sc.hasNextInt()) {
-                    moveRow = sc.nextInt();
-                    legalRow = true;
-                }
-                else {
-                    System.out.println("Enter a legal row!");
-                    sc.next();  //very important, resets the input from the "bad" one
-                }
-
                 //col move
                 System.out.println("Enter col to move:");
                 //hasNextInt will return true if user input is an int
                 if(sc.hasNextInt()) {
-                    moveCol = sc.nextInt();
+                    moveCol += sc.nextInt();
                     legalCol = true;
                 }
                 else {
@@ -48,18 +36,32 @@ public class Runner {
                     sc.next();  //very important, resets the input from the "bad" one
                 }
 
+                //row move
+                System.out.println("Enter row to move:");
+                //hasNextInt will return true if user input is an int
+                if(sc.hasNextInt()) {
+                    moveRow += sc.nextInt();
+                    legalRow = true;
+                }
+                else {
+                    System.out.println("Enter a legal row!");
+                    sc.next();  //very important, resets the input from the "bad" one
+                }
+
+
+
                 if(legalRow && legalCol) {
-                    h.b.makeMove(moveRow,moveCol,h.token);
+                    c.b.makeMove(moveRow,moveCol,h.token);
                 }
             }
 
             //computer move
             int[] cMove = c.determineMove();
-            c.b.makeMove(cMove[0],cMove[1],c.token);
+            h.b.makeMove(cMove[0],cMove[1],c.token);
 
             //all done moving, display and repeat
-            h.display();
             c.display();
+            h.display();
 
         }
 

@@ -47,8 +47,13 @@ public class Board {
     }
 
         //makes a move on the board - changes a position to "token value"
-    public void makeMove(int row, int col, String token) {
-        grid[row][col] = token;
+    public void makeMove(int row, int col) {
+        if (grid[row][col] == Ship.image){
+            grid[row][col] = Player.hit;
+        }else {
+            grid[row][col] = Player.miss;
+        }
+
         }
     }
 
