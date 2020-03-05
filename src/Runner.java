@@ -9,6 +9,9 @@ public class Runner {
         Computer c = new Computer("❌");
         Scanner sc =  new Scanner(System.in);
 
+        c.display();
+        h.display();
+
         //game loop - alternate moves
         while(!h.checkWin() && !c.checkWin()) {
 

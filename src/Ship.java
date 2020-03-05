@@ -2,27 +2,46 @@ import java.util.Random;
 public class Ship {
     int size;
     String [] length = new String[size];
-    int [][] position = new int[size][2];
+    boolean vertical = false;
+    public static String image = "🛸";
+
 
     public Ship(int size) {
         this.size = size;
+        Random random = new Random();
+        this.vertical = random.nextBoolean();
     }
 
     public String [] makeShip (){
         for(int i = 0; i < this.size; i++) {
-            length[i] = "\uD83D\uDE80";
+            length[i] = Ship.image;
         }
         return length;
     }
 
-    public void shipLoc(){
+    public void shipLoc(Board board){
         Random random = new Random();
-        int vertical = random.nextInt(2);
-        int row = random.nextInt(10);
-        int col = random.nextInt(10);
-        if (vertical == 0){
-            for (int i = 0; i < this.size; i ++){
+        int row;
+        int col;
 
+        do {
+            if (vertical) {
+                row = random.nextInt(10 - this.size);
+                col = random.nextInt(10);
+            } else {
+                row = random.nextInt(10);
+                col = random.nextInt(10 - this.size);
+            }
+        } while ((!board.isValidLocation(row,col,this)));
+
+
+        if (!vertical){
+            for (int i = 0; i < this.size; i ++){
+            board.grid[row][col+i] = Ship.image;
+            }
+        }else{
+            for (int i = 0; i < this.size; i ++){
+                board.grid[row+i][col] = Ship.image ;
             }
         }
     }

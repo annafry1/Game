@@ -14,7 +14,11 @@ public class Player {
     public Player(String name, String token) {
         this.name = name;
         this.token = token;
-
+        carrier.shipLoc(b);
+        batlshp.shipLoc(b);
+        crusr.shipLoc(b);
+        sub.shipLoc(b);
+        dest.shipLoc(b);
     }
 
     //display board with nice text intro
