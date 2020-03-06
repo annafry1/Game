@@ -1,7 +1,6 @@
 import java.util.Random;
 public class Ship {
     int size;
-    String [] length = new String[size];
     boolean vertical = false;
     public static String image = "\uD83D\uDE80";
 
@@ -12,12 +11,6 @@ public class Ship {
         this.vertical = random.nextBoolean();
     }
 
-    public String [] makeShip (){
-        for(int i = 0; i < this.size; i++) {
-            length[i] = Ship.image;
-        }
-        return length;
-    }
 
     public void shipLoc(Board board){
         Random random = new Random();
@@ -40,9 +33,22 @@ public class Ship {
             }
         }else{
             for (int i = 0; i < this.size; i ++){
-                board.grid[row+i][col] = Ship.image ;
+                board.grid[row+i][col] = Ship.image;
             }
         }
     }
+
+    public boolean isSunk(Board board, int row, int col){
+        int count;
+        for (int i = 0; i < this.size; i ++){
+
+        }
+
+        if (board.grid[row][col] == "") {
+
+        }
+        return true;
+    }
+
 
 }

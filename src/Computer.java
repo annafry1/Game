@@ -1,6 +1,6 @@
 public class Computer extends Player{
 
-    public Computer(String token) {
+    public Computer() {
         super("Bit Bucket");
     }
 

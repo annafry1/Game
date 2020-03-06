@@ -51,13 +51,13 @@ public class Runner {
 
 
                 if(legalRow && legalCol) {
-                    c.b.makeMove(moveRow,moveCol,h.token);
+                    c.b.makeMove(moveRow,moveCol);
                 }
             }
 
             //computer move
             int[] cMove = c.determineMove();
-            h.b.makeMove(cMove[0],cMove[1],c.token);
+            h.b.makeMove(cMove[0],cMove[1]);
 
             //all done moving, display and repeat
             c.display();
