@@ -4,13 +4,11 @@ public class Ship {
     boolean vertical = false;
     public static String image = "\uD83D\uDE80";
 
-
     public Ship(int size) {
         this.size = size;
         Random random = new Random();
         this.vertical = random.nextBoolean();
     }
-
 
     public void shipLoc(Board board){
         Random random = new Random();
@@ -38,16 +36,27 @@ public class Ship {
         }
     }
 
-    public boolean isSunk(Board board, int row, int col){
-        int count;
-        for (int i = 0; i < this.size; i ++){
+    public boolean checkSink(Board board, int row, int col){
+        int count = 0;
 
+        if (vertical){
+            for (int i = 0; i < this.size; i ++){
+                if (board.grid[row+i][col] == Player.hit){
+                    count ++;
+                }
+            }
+        }else {
+            for (int i = 0; i < this.size; i ++){
+                if (board.grid[row][col+i] == Player.hit){
+                    count ++;
+                }
+            }
         }
 
-        if (board.grid[row][col] == "") {
-
+        if (count == this.size) {
+            return true;
         }
-        return true;
+        return false;
     }
 
 

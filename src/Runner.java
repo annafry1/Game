@@ -48,8 +48,6 @@ public class Runner {
                     sc.next();  //very important, resets the input from the "bad" one
                 }
 
-
-
                 if(legalRow && legalCol) {
                     c.b.makeMove(moveRow,moveCol);
                 }

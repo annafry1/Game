@@ -28,8 +28,6 @@ public class Board {
             }
             System.out.print("\n");
         }
-
-
     }
 
     public boolean isValidLocation(int row, int col, Ship ship) {
@@ -54,6 +52,9 @@ public class Board {
             grid[row][col] = Player.miss;
         }
 
+        if (){
+
+        }
         }
     }
 

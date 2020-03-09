@@ -1,15 +1,14 @@
 public class Player {
 
-    protected Board b = new Board();
+    public Board b = new Board();
     protected String name;
     protected String token;
-    protected Ship carrier = new Ship(5);
+    public Ship carrier = new Ship(5);
     protected Ship batlshp = new Ship(4);
     protected Ship crusr = new Ship(3);
     protected Ship sub = new Ship(3);
     protected Ship dest = new Ship(2);
     protected static String hit = "\uD83D\uDCA5";
-    protected int hitNum = 0;
     protected static String miss = "⚪";
 
 
