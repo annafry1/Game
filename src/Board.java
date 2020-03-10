@@ -1,6 +1,7 @@
 public class Board {
     int size = 10;
     String[][] grid = new String[size][size];
+    String[][] top = new String[size][size];
     public static String emptyBoard = "\uD83C\uDF20";
 
     //constructor initializes the whole
@@ -14,10 +15,30 @@ public class Board {
 
             }
         }
+        for (int row = 0; row < size; row++) {
+            for (int col = 0; col < size; col++) {
 
+                top[row][col] = emptyBoard;
+
+            }
+        }
     }
 
     //printBoard will output a board to the console
+
+    public void printTop() {
+
+        for (int row = 0; row < size; row++) {
+            for (int col = 0; col < size; col++) {
+
+                System.out.print(top[row][col]);
+
+            }
+            System.out.print("\n");
+        }
+    }
+
+
     public void printBoard() {
 
         for (int row = 0; row < size; row++) {
@@ -33,12 +54,12 @@ public class Board {
     public boolean isValidLocation(int row, int col, Ship ship) {
         if (ship.vertical) {
             for (int i = 0; i < ship.size; i++) {
-                if (grid[row + i][col] == Ship.image) return false;
+                if (grid[row + i][col].equals(Ship.image) ) return false;
             }
             return true;
         } else {
             for (int i = 0; i < ship.size; i++) {
-                if (grid[row][col + i] == Ship.image) return false;
+                if (grid[row][col + i].equals(Ship.image) ) return false;
             }
             return true;
         }
@@ -46,15 +67,14 @@ public class Board {
 
         //makes a move on the board - changes a position to "token value"
     public void makeMove(int row, int col) {
-        if (grid[row][col] == Ship.image){
+        if (grid[row][col].equals(Ship.image) ){
             grid[row][col] = Player.hit;
+            top[row][col] = Player.hit;
         }else {
             grid[row][col] = Player.miss;
-        }
-
-        if (){
-
-        }
+            top[row][col] = Player.miss;
         }
     }
+
+}
 

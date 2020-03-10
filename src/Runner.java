@@ -53,6 +53,7 @@ public class Runner {
                 }
             }
 
+
             //computer move
             int[] cMove = c.determineMove();
             h.b.makeMove(cMove[0],cMove[1]);
@@ -61,6 +62,12 @@ public class Runner {
             c.display();
             h.display();
 
+            if (c.carrier.isSunk(c.b)){
+                System.out.println("You sunk a ship!");
+            }else if (h.checkSink()){
+                System.out.println("Your ship has been sunk!");
+            }
+
         }
 
         System.out.print("Game Over!");
@@ -68,3 +75,5 @@ public class Runner {
     }
 
 }
+
+ //|| !(c.b.grid[moveRow].equals(Player.hit) || c.b.grid[moveRow].equals(Player.miss))

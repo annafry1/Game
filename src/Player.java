@@ -2,7 +2,6 @@ public class Player {
 
     public Board b = new Board();
     protected String name;
-    protected String token;
     public Ship carrier = new Ship(5);
     protected Ship batlshp = new Ship(4);
     protected Ship crusr = new Ship(3);
@@ -25,14 +24,20 @@ public class Player {
     //display board with nice text intro
     public void display() {
         System.out.println(name + "'s board:");
+        //b.printTop();
+        System.out.println(" ");
         b.printBoard();
+    }
+
+    public boolean checkSink(){
+        return (carrier.isSunk(b));
     }
 
 
     //win check routine with basic "algorithm" for now
     public boolean checkWin() {
 
-        if(b.grid[0][0] == "0") {
+        if(carrier.isSunk(b) && batlshp.isSunk(b) && crusr.isSunk(b) && sub.isSunk(b) && dest.isSunk(b)) {
             return true;
         }
 
