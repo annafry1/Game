@@ -1,11 +1,12 @@
 import java.util.Random;
+
 public class Ship {
     int size;
     boolean vertical = false;
     public static String image = "\uD83D\uDE80";
     private int row;
     private int col;
-
+    public boolean sunk = false;
 
     public Ship(int size) {
         this.size = size;
@@ -51,8 +52,10 @@ public class Ship {
                 }
             }
         }
-
-      return count == this.size;
+        if(this.sunk){
+            return false;
+        }
+        return count == this.size;
     }
 
 

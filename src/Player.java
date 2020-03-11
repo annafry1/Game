@@ -24,9 +24,15 @@ public class Player {
     //display board with nice text intro
     public void display() {
         System.out.println(name + "'s board:");
-        //b.printTop();
-        System.out.println(" ");
         b.printBoard();
+        System.out.println(" ");
+
+    }
+
+    public void displayTop(){
+
+        b.printTop();
+        System.out.println(" ");
     }
 
     public boolean checkSink(){
