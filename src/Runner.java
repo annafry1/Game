@@ -63,16 +63,26 @@ public class Runner {
                     legalRow = false;
                 }
 
-                if(legalRow && legalCol) {
-                    c.b.makeMove(moveRow,moveCol);
+
+                //Fix this and see why it doesn't work
+                if (!c.b.grid[moveRow][moveCol].equals(Player.miss ) && !c.b.grid[moveRow][moveCol].equals(Player.hit)){
+                    if(legalRow && legalCol ) {
+                        c.b.makeMove(moveRow,moveCol);
+                    }
+                }else {
+                    legalCol = false;
+                    legalRow = false;
+                    System.out.println("You have already shot this location. ");
+                    moveCol = -1;
+                    moveRow = -1;
                 }
+
             }
 
 
             //computer move
             int[] cMove = c.determineMove();
             h.b.makeMove(cMove[0],cMove[1]);
-
 
             if (c.carrier.isSunk(c.b)){
                 System.out.println("You sunk a carrier!");
