@@ -30,7 +30,6 @@ public class Player {
     }
 
     public void displayTop(){
-
         b.printTop();
         System.out.println(" ");
     }
@@ -43,11 +42,7 @@ public class Player {
     //win check routine with basic "algorithm" for now
     public boolean checkWin() {
 
-        if(carrier.isSunk(b) && batlshp.isSunk(b) && crusr.isSunk(b) && sub.isSunk(b) && dest.isSunk(b)) {
-            return true;
-        }
-
-        return false;
+        return carrier.isSunk(b) && batlshp.isSunk(b) && crusr.isSunk(b) && sub.isSunk(b) && dest.isSunk(b);
 
     }
 

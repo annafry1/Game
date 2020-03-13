@@ -52,6 +52,8 @@ public class Ship {
                 }
             }
         }
+
+        System.out.println(count);
         if(this.sunk){
             return false;
         }

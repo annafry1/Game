@@ -15,7 +15,7 @@ public class Runner {
         h.display();
 
         //game loop - alternate moves
-        while(!h.checkWin() && !c.checkWin()) {
+        while(h.checkWin() && c.checkWin()) {
 
             //set up vars
             boolean legalRow = false;
