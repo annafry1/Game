@@ -38,6 +38,10 @@ public class Ship {
     }
 
     public boolean isSunk(Board board){
+        if(this.sunk){
+            return true;
+        }
+
         int count = 0;
         if (vertical){
             for (int i = 0; i < this.size; i ++){
@@ -53,11 +57,12 @@ public class Ship {
             }
         }
 
-        System.out.println(count);
-        if(this.sunk){
+        if (count==this.size) {
+            this.sunk = true;
+            return true;
+        } else {
             return false;
         }
-        return count == this.size;
     }
 
 

@@ -26,6 +26,10 @@ public class Board {
 
     //printBoard will output a board to the console
 
+    public boolean isHit(int row, int col, String square){
+        return this.grid[row][col].equals(square);
+    }
+
     public void printTop() {
 
         for (int row = 0; row < size; row++) {

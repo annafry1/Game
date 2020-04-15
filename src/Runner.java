@@ -9,13 +9,13 @@ public class Runner {
         Computer c = new Computer();
         Scanner sc =  new Scanner(System.in);
 
-//        h.displayTop();
-//        c.display();
-        c.displayTop();
+        //h.displayTop();
+        c.display();
+ //       c.displayTop();
         h.display();
-
+        System.out.println("Entering the main game loop");
         //game loop - alternate moves
-        while(h.checkWin() && c.checkWin()) {
+        while(!h.checkWin() && !c.checkWin()) {
 
             //set up vars
             boolean legalRow = false;
@@ -63,7 +63,7 @@ public class Runner {
                     legalRow = false;
                 }
 
-
+                System.out.println("      ->>>>Player is moving");
                 //Fix this and see why it doesn't work
                 if (!c.b.grid[moveRow][moveCol].equals(Player.miss ) && !c.b.grid[moveRow][moveCol].equals(Player.hit)){
                     if(legalRow && legalCol ) {
@@ -79,9 +79,9 @@ public class Runner {
 
             }
 
-
+            System.out.println("      ->>>>Computer is moving");
             //computer move
-            int[] cMove = c.determineMove();
+            int[] cMove = c.determineMove(h.b);
             h.b.makeMove(cMove[0],cMove[1]);
 
             if (c.carrier.isSunk(c.b)){
@@ -101,19 +101,24 @@ public class Runner {
                 c.dest.sunk = true;
             }else if (h.carrier.isSunk(h.b)){
                 System.out.println("Your carrier has been sunk!");
+                c.resetlogic();
                 h.carrier.sunk = true;
             }else if (h.batlshp.isSunk(h.b)){
                 System.out.println("Your battleship has been sunk!");
                 h.batlshp.sunk = true;
+                c.resetlogic();
             }else if (h.crusr.isSunk(h.b)){
                 System.out.println("Your cruiser has been sunk!");
                 h.crusr.sunk = true;
+                c.resetlogic();
             }else if (h.sub.isSunk(h.b)){
                 System.out.println("Your submarine has been sunk!");
                 h.sub.sunk = true;
+                c.resetlogic();
             }else if (h.dest.isSunk(h.b)){
                 System.out.println("Your destroyer has been sunk!");
                 h.dest.sunk = true;
+                c.resetlogic();
             }
             //all done moving, display and repeat
 //            h.displayTop();
