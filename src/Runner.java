@@ -29,12 +29,12 @@ public class Runner {
                 //col move
                 System.out.println("Enter column to move:");
                 //hasNextInt will return true if user input is an int
-                if(sc.hasNextInt()){
+                if (sc.hasNextInt()) {
                     int cc = sc.nextInt();
-                    if(cc < 11 && cc > 0) {
+                    if (cc < 11 && cc > 0) {
                         moveCol += cc;
                         legalCol = true;
-                    }else{
+                    } else {
                         System.out.println("Enter a legal column!");
                         sc.next();  //very important, resets the input from the "bad" one
                     }
@@ -47,41 +47,40 @@ public class Runner {
                 //row move
                 System.out.println("Enter row to move:");
                 //hasNextInt will return true if user input is an int
-                if(sc.hasNextInt()) {
+                if (sc.hasNextInt()) {
                     int rr = sc.nextInt();
-                    if (rr > 0 && rr < 11){
+                    if (rr > 0 && rr < 11) {
                         moveRow += rr;
                         legalRow = true;
-                    }else{
+                    } else {
                         System.out.println("Enter a legal row!");
                         sc.next();  //very important, resets the input from the "bad" one
                     }
 
-                }else {
+                } else {
                     System.out.println("Enter a legal row!");
                     sc.next();  //very important, resets the input from the "bad" one
                     legalRow = false;
                 }
 
-                System.out.println("      ->>>>Player is moving");
+                //System.out.println("      ->>>>Player is moving");
                 //Fix this and see why it doesn't work
-                if (!c.b.grid[moveRow][moveCol].equals(Player.miss ) && !c.b.grid[moveRow][moveCol].equals(Player.hit)){
-                    if(legalRow && legalCol ) {
-                        c.b.makeMove(moveRow,moveCol);
+                if (legalRow && legalCol) {
+                    if (!c.b.grid[moveRow][moveCol].equals(Player.miss) && !c.b.grid[moveRow][moveCol].equals(Player.hit)) {
+                        c.b.makeMove(moveRow, moveCol);
+                    } else {
+                        legalCol = false;
+                        legalRow = false;
+                        System.out.println("You have already shot this location. ");
+                        moveCol = -1;
+                        moveRow = -1;
                     }
-                }else {
-                    legalCol = false;
-                    legalRow = false;
-                    System.out.println("You have already shot this location. ");
-                    moveCol = -1;
-                    moveRow = -1;
                 }
-
             }
 
-            System.out.println("      ->>>>Computer is moving");
+            //System.out.println("      ->>>>Computer is moving");
             //computer move
-            int[] cMove = c.determineMove2(h.b);
+            int[] cMove = c.determineMove(h.b);
             h.b.makeMove(cMove[0],cMove[1]);
 
             if (c.carrier.isSunk(c.b)){
@@ -101,24 +100,19 @@ public class Runner {
                 c.dest.sunk = true;
             }else if (h.carrier.isSunk(h.b)){
                 System.out.println("Your carrier has been sunk!");
-                c.resetlogic();
                 h.carrier.sunk = true;
             }else if (h.batlshp.isSunk(h.b)){
                 System.out.println("Your battleship has been sunk!");
                 h.batlshp.sunk = true;
-                c.resetlogic();
             }else if (h.crusr.isSunk(h.b)){
                 System.out.println("Your cruiser has been sunk!");
                 h.crusr.sunk = true;
-                c.resetlogic();
             }else if (h.sub.isSunk(h.b)){
                 System.out.println("Your submarine has been sunk!");
                 h.sub.sunk = true;
-                c.resetlogic();
             }else if (h.dest.isSunk(h.b)){
                 System.out.println("Your destroyer has been sunk!");
                 h.dest.sunk = true;
-                c.resetlogic();
             }
             //all done moving, display and repeat
 //            h.displayTop();

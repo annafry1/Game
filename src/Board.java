@@ -83,7 +83,7 @@ public class Board {
 
 
     public boolean isValidMove(int row, int col){
-        return (row > 0 && row < 11 && col > 0 && col < 11 &&
+        return (row > -1 && row < 10 && col > -1 && col < 10 &&
                 !(grid[row][col]).equals(Player.miss) &&
                 !(grid[row][col]).equals(Player.hit));
     }
