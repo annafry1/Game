@@ -16,12 +16,13 @@ public class GameLogic {
         vertical = false;
         row=0;
         col=0;
-        testposition=0;
+        //0 = W, 1 = N, 2 = E, 3 = S
     }
 
     public int getTestposition(){
         return testposition;
     }
+
     public void find(int r, int c) {
         foundShip = true;
         row = r;
@@ -29,13 +30,16 @@ public class GameLogic {
         testposition = 0;
     }
 
-    public void sink(int r, int c, boolean v) {
+    public void sink(boolean v) {
         foundShip = true;
         sinkingShip = true;
-        row = r;
-        col = c;
         vertical = v;
         testposition = 0;
+    }
+
+    public void setRowCol(int r, int c) {
+        row = r;
+        col = c;
     }
 
     public int[] getNorth(){
@@ -66,17 +70,11 @@ public class GameLogic {
         return move;
     }
 
-    public boolean incrementTestPosition(){
-        if(testposition==3) {
-            testposition=0;
-            return false;
-        }
+    public void incrementTestPosition(){
         testposition++;
-        return true;
-
     }
 
-    public int[] getNextMove(){
+    public int[] getNextMove(Board board){
         if(vertical){
             row ++;
         }else {

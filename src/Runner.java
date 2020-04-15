@@ -81,7 +81,7 @@ public class Runner {
 
             System.out.println("      ->>>>Computer is moving");
             //computer move
-            int[] cMove = c.determineMove(h.b);
+            int[] cMove = c.determineMove2(h.b);
             h.b.makeMove(cMove[0],cMove[1]);
 
             if (c.carrier.isSunk(c.b)){

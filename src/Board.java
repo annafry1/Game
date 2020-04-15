@@ -27,7 +27,8 @@ public class Board {
     //printBoard will output a board to the console
 
     public boolean isHit(int row, int col, String square){
-        return this.grid[row][col].equals(square);
+        if (row < 0 || row > 10 || col < 0 || col > 10 ) return false;
+        return (this.grid[row][col]).equals(square);
     }
 
     public void printTop() {
@@ -80,5 +81,11 @@ public class Board {
         }
     }
 
+
+    public boolean isValidMove(int row, int col){
+        return (row > 0 && row < 11 && col > 0 && col < 11 &&
+                !(grid[row][col]).equals(Player.miss) &&
+                !(grid[row][col]).equals(Player.hit));
+    }
 }
 
