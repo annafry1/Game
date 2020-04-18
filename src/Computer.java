@@ -1,7 +1,7 @@
 public class Computer extends Player {
 
     public Computer() {
-        super("Bit Bucket");
+        super("Opponent");
     }
 
 
@@ -26,6 +26,21 @@ public class Computer extends Player {
         do {
             move = randomMove(board);
         } while ((move[0] * 9 + move[1]) % 2 == 0);
+        return move;
+    }
+
+    public int[] bruteForce(Board board){
+        int[] move = new int[2];
+        for (int i = 0; i < 10; i++)
+            for (int j = 0; j < 10; j++) {
+                if (board.isValidMove(i, j)) {
+                    move[0] = i;
+                    move[1] = j;
+                    if (Runner.VERBOSE)
+                        System.out.println("Computer is making a move at[" + move[0] + "][" + move[1] + "]");
+                    return move;
+                }
+            }
         return move;
     }
 

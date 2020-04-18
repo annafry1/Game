@@ -2,11 +2,11 @@ public class Player {
 
     public Board b = new Board();
     protected String name;
-    public Ship carrier = new Ship(5);
-    protected Ship batlshp = new Ship(4);
-    protected Ship crusr = new Ship(3);
-    protected Ship sub = new Ship(3);
-    protected Ship dest = new Ship(2);
+    public Ship carrier = new Ship(5, "carrier");
+    protected Ship batlshp = new Ship(4, "battleship");
+    protected Ship crusr = new Ship(3, "cruiser");
+    protected Ship sub = new Ship(3, "submarine");
+    protected Ship dest = new Ship(2, "destroyer");
     protected static String hit = "\uD83D\uDCA5";
     protected static String miss = "⚪";
 
@@ -23,13 +23,14 @@ public class Player {
 
     //display board with nice text intro
     public void display() {
-        System.out.println(name + "'s board:");
+        System.out.println(name + " board:");
         b.printBoard();
         System.out.println(" ");
 
     }
 
     public void displayTop(){
+        System.out.println(name + "'s board:");
         b.printTop();
         System.out.println(" ");
     }

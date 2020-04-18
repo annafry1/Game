@@ -6,12 +6,15 @@ public class Ship {
     public static String image = "\uD83D\uDE80";
     private int row;
     private int col;
-    public boolean sunk = false;
+    private boolean sunk = false;
+    private boolean printed = false;
+    private String name;
 
-    public Ship(int size) {
+    public Ship(int size, String name) {
         this.size = size;
         Random random = new Random();
         this.vertical = random.nextBoolean();
+        this.name = name;
     }
 
     public void shipLoc(Board board){
@@ -35,6 +38,16 @@ public class Ship {
                 board.grid[row+i][col] = Ship.image;
             }
         }
+    }
+
+    public void printHumMessage(Board board){
+        if(!printed) System.out.println("You sunk a " + name + "!");
+        this.printed = true;
+    }
+
+    public void printComMessage(Board board){
+        if(!printed) System.out.println("Your " + name + " was sunk!");
+        this.printed = true;
     }
 
     public boolean isSunk(Board board){
