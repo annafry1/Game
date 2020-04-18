@@ -29,6 +29,7 @@ public class Computer extends Player {
         return move;
     }
 
+    // move by checking every square in order from top to bottom and left to right
     public int[] bruteForce(Board board){
         int[] move = new int[2];
         for (int i = 0; i < 10; i++)
@@ -75,7 +76,7 @@ public class Computer extends Player {
         return move;
     }
 
-    // checks all the squares aroudn a hit
+    // checks all the squares around a hit
     public int[] checkAllSquares(Board board) {
         int[] move = new int[]{-1, -1};
 
@@ -113,12 +114,14 @@ public class Computer extends Player {
             }
         return new int[]{-1,-1};
     }
+
     public int[] determineMove(Board board) {
         int row, col;
         int[] move = new int[2];
 
-        move = moveDownOrAcross(board);
-        if (board.isValidMove(move)) return move;
+        // Used algorithm tester to find this isn't more efficient than just running checkAllSquares
+        //move = moveDownOrAcross(board);
+        //if (board.isValidMove(move)) return move;
 
         move = checkAllSquares(board);
         if (board.isValidMove(move)) return move;

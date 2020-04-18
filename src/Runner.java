@@ -5,11 +5,13 @@ public class Runner {
     public static Boolean VERBOSE=false;
     public static Boolean TEST_ALGORITHMS=false;
 
+    // This checks how efficient each algorithm is - set TEST_ALGORITHMS to true to run
     public static void testingAlgorithms() {
         System.out.print("Testing Random Parity Seek:"); algorithmTester(3);
         System.out.print("            Testing Random:"); algorithmTester(1);
         System.out.print("       Testing Brute Force:"); algorithmTester(2);
     }
+
     public static void algorithmTester(int algorithm) {
         System.out.print(" algo["+algorithm+"]");
         int numTimes=1000;
@@ -135,30 +137,24 @@ public class Runner {
             int[] cMove = c.determineMove(h.b);
             h.b.makeMove(cMove[0],cMove[1]);
 
-            if (c.carrier.isSunk(c.b)){
-                c.carrier.printHumMessage(c.b);
-            }else if (c.batlshp.isSunk(c.b) ){
-                c.batlshp.printHumMessage(c.b);
-            }else if (c.crusr.isSunk(c.b)){
-                c.crusr.printHumMessage(c.b);
-            }else if (c.sub.isSunk(c.b)){
-                c.sub.printHumMessage(c.b);
-            }else if (c.dest.isSunk(c.b)){
-                c.dest.printHumMessage(c.b);
-            }else if (h.carrier.isSunk(h.b)){
-                h.carrier.printComMessage(h.b);
-            }else if (h.batlshp.isSunk(h.b)){
-                h.batlshp.printComMessage(h.b);
-            }else if (h.crusr.isSunk(h.b)){
-                h.crusr.printComMessage(h.b);
-            }else if (h.sub.isSunk(h.b)){
-                h.sub.printComMessage(h.b);
-            }else if (h.dest.isSunk(h.b)){
-                h.dest.printComMessage(h.b);
-            }
+            // Print sunk message one time for the human player
+            if (c.carrier.isSunk(c.b)) c.carrier.printHumMessage(c.b);
+            if (c.batlshp.isSunk(c.b) ) c.batlshp.printHumMessage(c.b);
+            if (c.crusr.isSunk(c.b)) c.crusr.printHumMessage(c.b);
+            if (c.sub.isSunk(c.b)) c.sub.printHumMessage(c.b);
+            if (c.dest.isSunk(c.b)) c.dest.printHumMessage(c.b);
+
+            // Print sunk message one time for the computer
+            if (h.carrier.isSunk(h.b)) h.carrier.printComMessage(h.b);
+            if (h.batlshp.isSunk(h.b)) h.batlshp.printComMessage(h.b);
+            if (h.crusr.isSunk(h.b)) h.crusr.printComMessage(h.b);
+            if (h.sub.isSunk(h.b)) h.sub.printComMessage(h.b);
+            if (h.dest.isSunk(h.b)) h.dest.printComMessage(h.b);
             //all done moving, display and repeat
-//            h.displayTop();
-//            c.display();
+
+            // h.displayTop();
+            // c.display();
+            // Just display the top of the computer board and show the human board
             c.displayTop();
             h.display();
 

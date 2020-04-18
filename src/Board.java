@@ -7,7 +7,6 @@ public class Board {
     //constructor initializes the whole
     // grid with 0's when created
     public Board() {
-
         for (int row = 0; row < size; row++) {
             for (int col = 0; col < size; col++) {
 
@@ -25,14 +24,12 @@ public class Board {
     }
 
     //printBoard will output a board to the console
-
-    public boolean isHit(int row, int col, String square){
-        if (row < 0 || row > 10 || col < 0 || col > 10 ) return false;
+    public boolean isHit(int row, int col, String square) {
+        if (row < 0 || row > 10 || col < 0 || col > 10) return false;
         return (this.grid[row][col]).equals(square);
     }
 
     public void printTop() {
-
         for (int row = 0; row < size; row++) {
             for (int col = 0; col < size; col++) {
 
@@ -45,7 +42,6 @@ public class Board {
 
 
     public void printBoard() {
-
         for (int row = 0; row < size; row++) {
             for (int col = 0; col < size; col++) {
 
@@ -59,37 +55,37 @@ public class Board {
     public boolean isValidLocation(int row, int col, Ship ship) {
         if (ship.vertical) {
             for (int i = 0; i < ship.size; i++) {
-                if (grid[row + i][col].equals(Ship.image) ) return false;
+                if (grid[row + i][col].equals(Ship.image)) return false;
             }
             return true;
         } else {
             for (int i = 0; i < ship.size; i++) {
-                if (grid[row][col + i].equals(Ship.image) ) return false;
+                if (grid[row][col + i].equals(Ship.image)) return false;
             }
             return true;
         }
     }
 
-        //makes a move on the board - changes a position to "token value"
+    //makes a move on the board - changes a position to "token value"
     public void makeMove(int row, int col) {
-        if (grid[row][col].equals(Ship.image) ){
+        if (grid[row][col].equals(Ship.image)) {
             grid[row][col] = Player.hit;
             top[row][col] = Player.hit;
-        }else {
+        } else {
             grid[row][col] = Player.miss;
             top[row][col] = Player.miss;
         }
     }
 
-
-    public boolean isValidMove(int row, int col){
+    // checks if the row and col are in the right range and if the square hasn't been played before
+    public boolean isValidMove(int row, int col) {
         return (row > -1 && row < 10 && col > -1 && col < 10 &&
                 !(grid[row][col]).equals(Player.miss) &&
                 !(grid[row][col]).equals(Player.hit));
     }
 
     public boolean isValidMove(int[] move) {
-        return isValidMove(move[0],move[1]);
+        return isValidMove(move[0], move[1]);
     }
 }
 

@@ -8,7 +8,7 @@ public class Ship {
     private int col;
     private boolean sunk = false;
     private boolean printed = false;
-    private String name;
+    private final String name;
 
     public Ship(int size, String name) {
         this.size = size;
@@ -17,6 +17,7 @@ public class Ship {
         this.name = name;
     }
 
+    // Places a ship on the board
     public void shipLoc(Board board){
         Random random = new Random();
         do {
@@ -40,6 +41,7 @@ public class Ship {
         }
     }
 
+    // only print the sunk message one time
     public void printHumMessage(Board board){
         if(!printed) System.out.println("You sunk a " + name + "!");
         this.printed = true;
@@ -50,6 +52,7 @@ public class Ship {
         this.printed = true;
     }
 
+    // checks if a ship has been sunk
     public boolean isSunk(Board board){
         if(this.sunk){
             return true;

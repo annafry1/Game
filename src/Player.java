@@ -1,16 +1,13 @@
 public class Player {
-
     public Board b = new Board();
     protected String name;
-    public Ship carrier = new Ship(5, "carrier");
+    protected Ship carrier = new Ship(5, "carrier");
     protected Ship batlshp = new Ship(4, "battleship");
     protected Ship crusr = new Ship(3, "cruiser");
     protected Ship sub = new Ship(3, "submarine");
     protected Ship dest = new Ship(2, "destroyer");
     protected static String hit = "\uD83D\uDCA5";
     protected static String miss = "⚪";
-
-
 
     public Player(String name) {
         this.name = name;
@@ -35,12 +32,8 @@ public class Player {
         System.out.println(" ");
     }
 
-    public boolean checkSink(){
-        return (carrier.isSunk(b));
-    }
 
-
-    //win check routine with basic "algorithm" for now
+    //win check routine that checks if all the ships have been sunk for a player
     public boolean checkWin() {
         if (Runner.VERBOSE)
             System.out.println(name+" carrier["+carrier.isSunk(b)+"]"+
