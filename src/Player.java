@@ -41,7 +41,8 @@ public class Player {
 
     //win check routine with basic "algorithm" for now
     public boolean checkWin() {
-        System.out.println(name+" carrier["+carrier.isSunk(b)+"]"+
+        if (Runner.VERBOSE)
+            System.out.println(name+" carrier["+carrier.isSunk(b)+"]"+
                 " battleship["+batlshp.isSunk(b)+"]"+
                 " cruiser["+crusr.isSunk(b)+"]"+
                 " sub["+sub.isSunk(b)+"]"+

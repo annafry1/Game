@@ -87,5 +87,9 @@ public class Board {
                 !(grid[row][col]).equals(Player.miss) &&
                 !(grid[row][col]).equals(Player.hit));
     }
+
+    public boolean isValidMove(int[] move) {
+        return isValidMove(move[0],move[1]);
+    }
 }
 

@@ -2,8 +2,53 @@ import java.util.Scanner;
 
 public class Runner {
 
+    public static Boolean VERBOSE=false;
+    public static Boolean TEST_ALGORITHMS=false;
+
+    public static void testingAlgorithms() {
+        System.out.print("Testing Random Parity Seek:"); algorithmTester(3);
+        System.out.print("            Testing Random:"); algorithmTester(1);
+
+    }
+    public static void algorithmTester(int algorithm) {
+        System.out.print(" algo["+algorithm+"]");
+        int numTimes=1000;
+        int sum=0;
+        int max=0;
+        int min=1000;
+
+        for (int i=0; i < numTimes; i++) {
+            if (i%10==0)
+                System.out.print(".");
+            Human h = new Human("testBoard");
+            Computer c = new Computer();
+            int moveCount=0;
+            while (!h.checkWin()) {
+                moveCount++;
+                int[] cMove;
+                switch(algorithm) {
+                    case 1:
+                        cMove = c.randomMove(h.b);
+                        break;
+                    default:
+                        cMove = c.determineMove(h.b);
+                }
+                h.b.makeMove(cMove[0], cMove[1]);
+            }
+            //if (i%10==0) System.out.print("("+moveCount+")");
+            if (moveCount > max)
+                max = moveCount;
+            if (moveCount < min)
+                min = moveCount;
+            sum=sum+moveCount;
+        }
+        System.out.println(":avg moves="+sum/numTimes+" min="+min+" max="+max);
+    }
+
     public static void main(String[] args) {
 
+        if (TEST_ALGORITHMS)
+            testingAlgorithms();
         //make instances
         Human h = new Human("Alby");
         Computer c = new Computer();
@@ -130,4 +175,3 @@ public class Runner {
 
 }
 
- //|| !(c.b.grid[moveRow].equals(Player.hit) || c.b.grid[moveRow].equals(Player.miss))
